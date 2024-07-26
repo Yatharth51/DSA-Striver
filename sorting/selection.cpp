@@ -18,6 +18,23 @@ void Sel(int *arr,int n){
     }
 }
 
+void min(int *arr, int ind, int n){
+    int min = ind;
+    for (int i = ind ; i<n ; i++){
+        if (arr[i]<arr[min]){
+            min=i;
+        }
+    }
+    if (min!=ind) swap(arr[min],arr[ind]);
+}
+
+
+void recSel(int*arr, int ind , int n){
+    if (ind>=n-1) return ;
+    min(arr,ind,n);
+    recSel(arr,ind+1,n);
+}
+
 void printArr(int *arr,int n){
     for (int i = 0 ; i<n ; i++){
         cout<<arr[i]<<" ";
