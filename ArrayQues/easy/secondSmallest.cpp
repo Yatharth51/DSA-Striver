@@ -11,7 +11,7 @@ int secondSmallest(vector<int> arr){
     if (mp.size()==1) return -1;
     int counter = 0;
     for (auto i = mp.begin() ; i!=mp.end(); i++ ){
-        if (counter==mp.size()-2){
+        if (counter==1){      // for second larget counter == mp.size()-2;
             return i->first;
         }
         counter++;

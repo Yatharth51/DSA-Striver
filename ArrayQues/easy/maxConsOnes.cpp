@@ -1,15 +1,15 @@
 #include <iostream>
 using namespace std;
  
-int maxOnes(vector<int> arr){
+int maxOnes(vector<int> nums){
     int outloop=0;
-    int n = arr.size();
+    int n = nums.size();
     for (int i = 0 ; i< n ; i++){
         int inloop=0;
-        if (arr[i]==1){
+        if (nums[i]==1){
             inloop++;
             for (int j = i+1 ; j< n ; j++){
-            if (arr[j]!=1){
+            if (nums[j]!=1){
                 break;
             }
             else inloop++;
@@ -21,9 +21,9 @@ int maxOnes(vector<int> arr){
 
 }
 
-void printArr(vector<int> arr){
-    for (int i = 0 ; i<arr.size() ; i++){
-        cout<<arr[i]<<" ";
+void printnums(vector<int> nums){
+    for (int i = 0 ; i<nums.size() ; i++){
+        cout<<nums[i]<<" ";
     }
     cout<<endl;
 }
