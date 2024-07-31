@@ -21,6 +21,20 @@ void printArr(int *arr,int n){
     cout<<endl;
 }
 
+
+void swapping(int* arr, int n){
+    for (int i = 0 ; i<=n-1 ; i++){
+        if (arr[i]>arr[i+1]) swap(arr[i],arr[i+1]);
+    }
+}
+
+void recBubble(int* arr, int n){
+    if (n==1) return ;
+    swapping(arr,n);
+    recBubble(arr,n-1);
+
+}
+
 int main() {
  
     int arr[]={20,20,10,2,90,100,8,1,1};

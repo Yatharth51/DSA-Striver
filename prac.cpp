@@ -1,58 +1,39 @@
 #include <iostream>
 using namespace std;
- 
- vector<int> temp;
 
-void finUni(vector<int> &nums1,vector<int> &nums2){
-    int n= nums1.size(), m = nums2.size();
-    int i =0 , j= 0;
-    int k = 0;
-    while (i<n && j<m){
-        if (nums1[i]<nums2[j] && temp[k-1]!=nums1[i]){
-            temp.push_back(nums1[i]);
-            i++;
-            k++;
-        }
-        else if (nums1[i]>nums2[j] && temp[k-1]!=nums2[j]){
-            temp.push_back(nums2[j]);
+int remdups(vector<int> &nums){
+    int n = nums.size();
+    int i = 0;
+    int j = i+1;
+    while(j<n){
+        int curelem = i;
+        while (nums[j]==nums[curelem]){
             j++;
-            k++;
         }
-        else if (nums1[i]==nums2[j] && temp[k-1]!=nums1[i]){
-            temp.push_back(nums1[i]);
-            i++;j++;k++;
-        }
-    }
-    while (i<n){
-        if (temp[k-1]!=nums1[i]){
-            temp.push_back(nums1[i]);
+        if (j<n && nums[j]!=nums[curelem]){
             i++;
-            k++;
-        }
-    }
-    while (j<m){
-        if (temp[k-1]!=nums2[j]){
-            temp.push_back(nums2[j]);
+            swap(nums[i],nums[j]);
             j++;
-            k++;
         }
     }
+    return i+1;
+
 }
 
-
-void print(vector<int> &arr){
-    for (int i = 0 ; i< arr.size(); i++){
-        cout<<arr[i]<<" ";
+void printnums(vector<int> nums,int n){
+    for (int i = 0 ; i<n ; i++){
+        cout<<nums[i]<<" ";
     }
     cout<<endl;
 }
 
+int main()
+{
 
-int main() {
-    vector<int> nums1 = {1,2,3,4,5};
-    vector<int> nums2 = {1,2,3,4,5};
-    finUni(nums1,nums2);
-    print(temp);
-
+    vector<int> nums = {1,1};
+    printnums(nums,nums.size());
+    cout<<remdups(nums)<<endl;
+    int n = remdups(nums);
+    printnums(nums,n);
     return 0;
 }
