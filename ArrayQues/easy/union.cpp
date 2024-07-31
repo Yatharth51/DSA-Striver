@@ -3,18 +3,41 @@ using namespace std;
  #include <set>
 
 vector<int> uni(vector<int> arr1, vector<int> arr2){
-    set<int> st;
-    vector<int>fin;
-    for (int i = 0 ; i<arr1.size(); i++){
-        st.insert(arr1[i]);
-    }
-    for (int i = 0 ; i<arr2.size(); i++){
-        st.insert(arr2[i]);
-    }
-    for (auto i : st){
-        fin.push_back(i);
-    }
-    return fin;
+    vector<int> ans ;
+        int i = 0 ;
+        int n = arr1.size();
+        int m = arr2.size();
+        int j = 0;
+        while (i<n && j<m){
+            if ( ans.size()==0  || (arr1[i]<arr2[j] && ans.back()!=arr1[i]) ){
+                ans.push_back(arr1[i]);
+                i++;
+            }
+            else if (ans.size()==0  || (arr1[i]>arr2[j] && ans.back()!=arr2[j])  ){
+                ans.push_back(arr2[j]);
+                j++;
+            }
+            else if(ans.size()==0  || (arr1[i]==arr2[j] && ans.back()!=arr1[i]) ){
+                ans.push_back(arr2[j]);
+                i++;
+                j++;
+            }
+        }
+        
+        while (i<n){
+            if (ans.back()!=arr1[i]){
+                ans.push_back(arr1[i]);
+                i++;
+            }
+        }
+        while (j<m){
+            if (ans.back()!=arr2[j]){
+                ans.push_back(arr2[j]);
+                j++;
+            }
+        }
+        
+        return ans;
 }
 
 void printArr(vector<int> arr){
