@@ -47,7 +47,7 @@ vector<int> spiral(vector<vector<int>> matrix)
         }
         if (left <= right)
         {
-            for (int i = bottom; i <= top; i++)
+            for (int i = bottom; i >= top; i--)
             {
                 ans.push_back(matrix[i][left]);
             }
