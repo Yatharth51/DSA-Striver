@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
- 
+#include <vector>
+
 
 void selectionSort(vector<int> &arr){
     for ( int i = 0 ; i< arr.size()-1; i++){
@@ -17,11 +18,14 @@ void selectionSort(vector<int> &arr){
 void bubbleSort(vector<int> &arr){
     int n = arr.size();
     for (int i = n-1 ; i>=1 ; i--){
+        int didswap = 0;
         for (int j= 0 ; j<=i-1 ; j++){
             if (arr[j]>arr[j+1]){
+                didswap=1;
                 swap(arr[j],arr[j+1]);
             }
         }
+        if (didswap==0)return;
     }
 }
 
@@ -126,7 +130,7 @@ int main() {
     vector<int> nums1 = {10,2,90,-2,10,1,1,0,5,90,2};
 
     print(nums1);
-    qs(nums1,0,nums1.size()-1);
+    bubbleSort(nums1);
     print(nums1);
 
     return 0;
